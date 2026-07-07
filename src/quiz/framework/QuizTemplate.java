@@ -48,6 +48,6 @@ public abstract class QuizTemplate {
         }
 
         // Exibe o resultado no final do quiz
-        interfaceGrafica.exibePontuacaoFinal(this.acertos, this.erros, this.pontFinal);
+         interfaceGrafica.exibePontuacaoFinal(this.acertos, this.erros, this.pontFinal);
     }
 }

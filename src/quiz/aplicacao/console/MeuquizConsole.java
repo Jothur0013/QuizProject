@@ -11,7 +11,7 @@ import java.util.List;
 public class MeuquizConsole extends QuizTemplate {
 
 public MeuquizConsole () {
-    super(new PerguntaFactoryConsole());
+     super(new PerguntaFactoryConsole());
 
     }
 }

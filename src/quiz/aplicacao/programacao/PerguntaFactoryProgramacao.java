@@ -24,7 +24,7 @@ public class PerguntaFactoryProgramacao  implements PerguntaFactory {
 
         perguntas.add(new Pergunta(
                 "O que significa a sigla POO?",
-                Arrays.asList(
+                 Arrays.asList(
                         "A) Programação Orientada a Objetos.",
                         "B) Programação Orientada a AURA.",
                         "C) Padrão Orientado a 67."

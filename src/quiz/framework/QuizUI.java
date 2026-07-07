@@ -7,4 +7,4 @@ public interface QuizUI {
     public boolean analisePergunta(Pergunta pergunta);
     public void feedback(Boolean acertou);
     public void exibePontuacaoFinal(int acertos, int erros, int pontuacaoFinal);
-}
+ }

@@ -11,7 +11,7 @@ public class Pergunta {
         this.opcoes = opcoes;
         this.resposta = resposta;
     }
-    public String getQuestao() {
+     public String getQuestao() {
         return this.questoes;
     }
     public String getResposta(){

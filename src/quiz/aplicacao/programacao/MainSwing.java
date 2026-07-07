@@ -22,4 +22,4 @@ public class MainSwing {
         // Finaliza o processo do Swing caso fique travado
         System.exit(0);
     }
-}
+ }

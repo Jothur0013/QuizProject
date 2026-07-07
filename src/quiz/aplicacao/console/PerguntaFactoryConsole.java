@@ -16,6 +16,6 @@ public class PerguntaFactoryConsole  implements PerguntaFactory {
         perguntasJ.add(new Pergunta("Qual o maior time brasileiro na libertadores?", Arrays.asList("Flamengo", "Fluminense", "Palmeiras", "Sao Paulo"), "Flamengo"));
         perguntasJ.add(new Pergunta("Quem é um pouco mais louco que todos nós?", Arrays.asList("ShigeoNomura", "Monark", "Lula", "Bolsonaro"), "ShigeoNomura"));
 
-        return perguntasJ;
+         return perguntasJ;
     }
 }

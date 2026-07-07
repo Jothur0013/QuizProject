@@ -41,7 +41,7 @@ public class ConsoleUI implements QuizUI{
             System.out.println("RESPOSTA FORA DAS OPCOES, TENTE NOVAMENTE!");
             return false;}}
 
-    @Override
+     @Override
     public void exibePontuacaoFinal(int acertos, int erros, int pontFinal){
         System.out.println("\n*******************************************\n ENCERRANDO O QUIZ \n*******************************************");
         System.out.println("\nESTATÍSTICAS:");

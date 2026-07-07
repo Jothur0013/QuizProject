@@ -72,4 +72,4 @@ public class SwingUI implements QuizUI {
 
         JOptionPane.showMessageDialog(null, resultado, "Resultado Final", JOptionPane.INFORMATION_MESSAGE);
     }
-}
+ }
