@@ -1,12 +1,15 @@
 package quiz.aplicacao.console;
 
-import quiz.framework.QuizUI;
-import quiz.framework.PontuacaoStrategy;
+import quiz.framework.AnnotationProcessor;
+import quiz.framework.ConfiguracaoQuiz;
 
- public class MainConsole {
-    public static void main(String[] args){
-        MeuquizConsole quiz = new MeuquizConsole();
-        QuizUI Console = new ConsoleUI();
-        PontuacaoStrategy regraPontos = new PontuacaoConsole();
-        quiz.iniciarQuiz(Console, regraPontos);    }
+@ConfiguracaoQuiz(
+        strategy = PontuacaoConsole.class,
+        fabric = PerguntaFactoryConsole.class,
+        ui = ConsoleUI.class
+)
+public class MainConsole {
+    public static void main(String[] args) {
+        AnnotationProcessor.iniciar(MainConsole.class);
+    }
 }

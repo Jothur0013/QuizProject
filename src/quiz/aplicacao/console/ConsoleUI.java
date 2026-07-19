@@ -3,7 +3,7 @@ package quiz.aplicacao.console;
 import quiz.framework.QuizUI;
 import quiz.framework.Pergunta;
 import java.util.Scanner;
-import quiz.aplicacao.console.MeuquizConsole;
+
 public class ConsoleUI implements QuizUI{
     Scanner sc = new Scanner(System.in);
     String respostaAtual;

@@ -1,53 +1,58 @@
 package quiz.framework;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class QuizTemplate {
+public class QuizTemplate {
+    private PontuacaoStrategy pontuacaoStrategy;
+    private List<JogadorObserver> listaJogadores;
+    private List<Pergunta> listaPerguntas;
 
-    // A lista de perguntas que o framework vai gerenciar
-    protected List<Pergunta> perguntas;
-
-
-    public QuizTemplate(PerguntaFactory fabricaDePerguntas) {
-        this.perguntas = fabricaDePerguntas.criarPerguntas();
+    public QuizTemplate(PontuacaoStrategy pontuacaoStrategy, List<Pergunta> listaPerguntas) {
+        if (pontuacaoStrategy != null) {
+            this.pontuacaoStrategy = pontuacaoStrategy;
+        }
+        if (listaPerguntas != null) {
+            this.listaPerguntas = listaPerguntas;
+        }
+        this.listaJogadores = new ArrayList<>();
     }
 
-    // Atributos da classe para o controle de pontuação
-    public int acertos = 0;
-    public int erros = 0;
-    public int pontFinal = 0;
-
-    // O Template Method que dita o fluxo do jogo
-    public final void iniciarQuiz(QuizUI interfaceGrafica, PontuacaoStrategy estrategiadePontos){
-
-        // Iteramos diretamente sobre a lista "this.perguntas" já carregada
-        for (Pergunta pergunta : this.perguntas) {
-
-            interfaceGrafica.exibePergunta(pergunta);
-            String respostaUsuario = interfaceGrafica.usuarioResposta();
-
-            // Loop para garantir que o usuário digite uma opção válida
-            while(!interfaceGrafica.analisePergunta(pergunta)) {
-                respostaUsuario = interfaceGrafica.usuarioResposta();
-            }
-
-            // Verifica se a resposta está correta
-            boolean acertou = pergunta.getResposta().equalsIgnoreCase(respostaUsuario);
-
-            // Atualiza as variáveis da classe (usando o "this.")
-            if (acertou) {
-                this.acertos++;
-            } else {
-                this.erros++;
-            }
-
-            interfaceGrafica.feedback(acertou);
-
-            // Usa o Strategy para calcular a pontuação
-            this.pontFinal += estrategiadePontos.calculaPontuacao(acertou);
+    public void registrarJogador(JogadorObserver jogadorAtual) {
+        if (jogadorAtual != null) {
+            this.listaJogadores.add(jogadorAtual);
         }
+    }
 
-        // Exibe o resultado no final do quiz
-         interfaceGrafica.exibePontuacaoFinal(this.acertos, this.erros, this.pontFinal);
+    public void iniciarQuiz() {
+        if (listaPerguntas != null && !listaPerguntas.isEmpty() && listaJogadores != null && !listaJogadores.isEmpty()) {
+            for (Pergunta perguntaAtual : listaPerguntas) {
+                for (JogadorObserver jogadorAtual : listaJogadores) {
+                    if (jogadorAtual != null) {
+                        jogadorAtual.receberNovaPergunta(perguntaAtual);
+                        String respostaCapturada = jogadorAtual.enviarResposta();
+
+                        if (respostaCapturada != null) {
+                            processarResposta(perguntaAtual, respostaCapturada, jogadorAtual);
+                        }
+                    }
+                }
+            }
+
+            for (JogadorObserver jogadorAtual : listaJogadores) {
+                if (jogadorAtual != null) {
+                    jogadorAtual.receberResultadoFinal();
+                }
+            }
+        }
+    }
+
+    private void processarResposta(Pergunta perguntaAtual, String respostaCapturada, JogadorObserver jogadorAtual) {
+        if (perguntaAtual != null && respostaCapturada != null && jogadorAtual != null) {
+            boolean acertou = respostaCapturada.trim().equalsIgnoreCase(perguntaAtual.getResposta().trim());
+            int pontos = pontuacaoStrategy.calculaPontuacao(acertou);
+
+            jogadorAtual.atualizarPlacar(pontos, acertou);
+        }
     }
 }
