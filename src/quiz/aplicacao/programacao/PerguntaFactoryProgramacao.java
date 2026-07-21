@@ -13,11 +13,11 @@ public class PerguntaFactoryProgramacao  implements PerguntaFactory {
 
         // Adiciona as perguntas usando a classe Pergunta do seu colega
         perguntas.add(new Pergunta(
-                "O que é Polimorfismo?",
+                "O que é o Mito de Sísifo?",
                 Arrays.asList(
-                        "A) Capacidade de um objeto assumir várias formas.",
-                        "B) Joao Arthur aura67.",
-                        "C) Joao Arthur."
+                        "A) Mito de um homem destinado a carregar uma rocha contra uma montanha pela eternidade",
+                        "B) Mito da Deusa do Amor e da Beleza",
+                        "C) Mito do homem que perdeu sua mulher pelo seu orgulho."
                 ),
                 "A"
         ));
@@ -27,7 +27,7 @@ public class PerguntaFactoryProgramacao  implements PerguntaFactory {
                  Arrays.asList(
                         "A) Programação Orientada a Objetos.",
                         "B) Programação Orientada a AURA.",
-                        "C) Padrão Orientado a 67."
+                        "C) Padrão Orientado a Ordem."
                 ),
                 "A"
         ));
