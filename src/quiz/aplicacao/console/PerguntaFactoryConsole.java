@@ -14,7 +14,7 @@ public class PerguntaFactoryConsole  implements PerguntaFactory {
 
         perguntasJ.add(new Pergunta("Orcas são?", Arrays.asList("Baleias", "Peixes", "Golfinhos", "Tubaroes" ), "Golfinhos"));
         perguntasJ.add(new Pergunta("Qual o maior time brasileiro na libertadores?", Arrays.asList("Flamengo", "Fluminense", "Palmeiras", "Sao Paulo"), "Flamengo"));
-        perguntasJ.add(new Pergunta("Quem é um pouco mais louco que todos nós?", Arrays.asList("ShigeoNomura", "Monark", "Lula", "Bolsonaro"), "ShigeoNomura"));
+        perguntasJ.add(new Pergunta("Qual a campeã da copa do mundo 2026?", Arrays.asList("Espanha", "Brasil", "Franca", "Cabo Verde"), "Espanha"));
 
          return perguntasJ;
     }
